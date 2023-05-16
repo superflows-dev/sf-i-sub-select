@@ -12,17 +12,23 @@ import { LitElement, PropertyValueMap } from 'lit';
  * @property label - select input label
  * @property name - name of the input
  * @property selectedId - id (primary key) to be preselected
- * @property selectedId - filter by the foreign key id
+ * @property filterId - filter by the foreign key id
  * @property selectedValue - value of the selected item
+ * @property repopulate - repopulate the list
  */
 export declare class SfISubSelect extends LitElement {
     apiId: string;
     label: string;
     name: string;
     mode: string;
-    selectedId: string;
+    flow: string;
+    selectedId: string[];
     filterId: string;
-    selectedValue: () => any;
+    removedValues: string[];
+    selectedTextPhrase: string;
+    selectedIndex: () => number;
+    selectedValues: () => any[];
+    selectedTexts: () => any[];
     static styles: import("lit").CSSResult;
     _sfSelect: any;
     _SfLoader: any;
@@ -38,16 +44,20 @@ export declare class SfISubSelect extends LitElement {
     clearMessages: () => void;
     setError: (msg: string) => void;
     setSuccess: (msg: string) => void;
+    clearSelection: () => void;
     prepareXhr: (data: any, url: string, loaderElement: any, authorization: any) => Promise<unknown>;
     submitNew: () => void;
+    fetchList: () => Promise<string>;
     renderList: (values: Array<any>) => void;
     populateList: () => Promise<void>;
     showNew: () => void;
     showView: () => void;
+    removeItemByValue: (value: string) => void;
     dispatchMyEvent: (ev: string, args?: any) => void;
     onChangeSelect: (ev: any) => void;
     initState: () => Promise<void>;
     initListeners: () => void;
+    loadMode: () => Promise<void>;
     constructor();
     protected firstUpdated(_changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>): void;
     connectedCallback(): void;

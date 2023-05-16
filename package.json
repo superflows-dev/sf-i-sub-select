@@ -1,7 +1,7 @@
 {
   "name": "sf-i-sub-select",
   "private": false,
-  "version": "1.0.4",
+  "version": "1.0.81",
   "description": "Superflows Navigation Component",
   "main": "sf-i-sub-select.js",
   "module": "sf-i-sub-select.js",
@@ -53,7 +53,7 @@
   "dependencies": {
     "fs": "^0.0.1-security",
     "lit": "^2.2.4",
-    "sf-i-select": "^1.0.2",
+    "sf-i-select": "^1.0.74",
     "sinon": "^15.0.1"
   },
   "devDependencies": {
