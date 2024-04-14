@@ -99,7 +99,8 @@ let SfISubSelect = class SfISubSelect extends LitElement {
             var retString = "";
             console.log('pop list');
             const body = { "fk": this.filterId };
-            const xhr = (await this.prepareXhr(body, "https://" + this.apiId + ".execute-api.us-east-1.amazonaws.com/test/list", this._SfLoader, null));
+            const authorization = btoa(Util.readCookie('email') + ":" + Util.readCookie('accessToken'));
+            const xhr = (await this.prepareXhr(body, "https://" + this.apiId + ".execute-api.us-east-1.amazonaws.com/test/list", this._SfLoader, authorization));
             this._SfLoader.innerHTML = '';
             if (xhr.status == 200) {
                 const jsonRespose = JSON.parse(xhr.responseText);
@@ -282,7 +283,8 @@ let SfISubSelect = class SfISubSelect extends LitElement {
         this.populateList = async () => {
             console.log('pop list');
             const body = { "fk": this.mode == "admin" ? document.querySelector('.input-parent-select').selectedValues()[0] : this.filterId };
-            const xhr = (await this.prepareXhr(body, "https://" + this.apiId + ".execute-api.us-east-1.amazonaws.com/test/list", this._SfLoader, null));
+            const authorization = btoa(Util.readCookie('email') + ":" + Util.readCookie('accessToken'));
+            const xhr = (await this.prepareXhr(body, "https://" + this.apiId + ".execute-api.us-east-1.amazonaws.com/test/list", this._SfLoader, authorization));
             this._SfLoader.innerHTML = '';
             if (xhr.status == 200) {
                 const jsonRespose = JSON.parse(xhr.responseText);
